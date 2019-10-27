@@ -31,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for transaction in data.values() %}
+        {% for transaction in data.response.values() %}
         <tr>
           <td>{{transaction['DATE']}}</td>
           <td>{{transaction['TRANSACTION DETAILS']}}</td>

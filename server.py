@@ -15,7 +15,7 @@ def query(mango):
 def main():
   return render_template('index.html', data=get_transactions())
 
-@app.route('/api/transaction/<limit>', methods=['GET'])
+@app.route('/api/transaction/<limit>')
 def get_transactions_with_limit(limit):
   mango = {
     "selector": {
@@ -25,26 +25,18 @@ def get_transactions_with_limit(limit):
   }
   return query(mango)
 
-@app.route('/api/transaction/', methods=['GET', 'POST'])
+@app.route('/api/transaction/')
 def get_transactions():
-  if request.method == 'GET':
-    return get_transactions_with_limit(25)
-  if request.method == 'DELETE':
-    return None
+  return get_transactions_with_limit(25)
 
-@app.route('/api/transaction/<id>', methods=['GET', 'DELETE', 'PUT'])
+@app.route('/api/transaction/<id>')
 def get_transaction_by_id(id):
-  if request.method == 'GET':
     mango = {
       "selector": {
         "_id": id
       }
     }
     return query(mango)
-  if request.method == 'DELETE':
-    return None
-  if request.method == 'POST':
-    return None
 
 if __name__ == '__main__':
   app.run(debug=True)
