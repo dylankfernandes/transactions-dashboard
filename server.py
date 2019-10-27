@@ -27,7 +27,7 @@ def get_transactions_with_limit(limit):
 
 @app.route('/api/transaction/')
 def get_transactions():
-  return get_transactions_with_limit(25)
+  return get_transactions_with_limit(1000)
 
 @app.route('/api/transaction/<id>')
 def get_transaction_by_id(id):
