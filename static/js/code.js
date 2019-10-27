@@ -1,6 +1,8 @@
 $(document).ready(function () {
   $('#transactions-table').DataTable();
 
+  var balance = {{data|safe}};
+
   var ctx = document.getElementById('transactions-graph').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'line',
